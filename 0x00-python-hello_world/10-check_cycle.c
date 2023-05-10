@@ -6,14 +6,15 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *slow = list;
-	listint_t *fast = list;
+	listint_t *single_step = list;
+	listint_t *double_step = list;
 
-	while ((slow != NULL) && (fast != NULL) && (*fast).next != NULL)
+	while ((single_step != NULL) && (double_step != NULL)
+			&& (*double_step).next != NULL)
 	{
-		fast = fast->next->next;
-		slow = (*slow).next;
-		if (slow == fast)
+		double_step = double_step->next->next;
+		single_step = (*single_step).next;
+		if (single_step == double_step)
 			return (1);
 	}
 	return (0);
