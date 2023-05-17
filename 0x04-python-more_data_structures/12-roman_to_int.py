@@ -12,14 +12,14 @@ def roman_to_int(roman_string):
             'M': 1000
     }
     conveted_rom = 0
-    for i in range(len(roman_string)):
-        if roman_dictionary.get(roman_string[i], 0) == 0:
-            return (0)
-        if (i != (len(roman_string) - 1) and
-                roman_dictionary[roman_string[i]] <
-                roman_dictionary[roman_string[i + 1]]):
-            conveted_rom += roman_dictionary[roman_string[i]] * -1
-        else: 
-            conveted_rom += roman_dictionary[roman_string[i]]
+    prev_value = 0
+
+    for roman in roman_string[::-1]:
+        value = roman_dictionary[roman]
+        if value >= prev_value:
+            conveted_rom += value
+        else:
+            conveted_rom -= value
+        prev_value = value
 
     return conveted_rom
