@@ -1,0 +1,47 @@
+test_addition_over_multiple_values (test_add_integer.AddIntegerTestCase) ... ok
+test_bool_with_number (test_add_integer.AddIntegerTestCase) ... FAIL
+test_both_float (test_add_integer.AddIntegerTestCase) ... ok
+test_float_with_int (test_add_integer.AddIntegerTestCase) ... ok
+test_int_with_float (test_add_integer.AddIntegerTestCase) ... ok
+test_more_than_2_args (test_add_integer.AddIntegerTestCase) ... ok
+test_negative_with_positive (test_add_integer.AddIntegerTestCase) ... ok
+test_no_args (test_add_integer.AddIntegerTestCase) ... ok
+test_non_number_with_non_number (test_add_integer.AddIntegerTestCase) ... ok
+test_non_number_with_number (test_add_integer.AddIntegerTestCase) ... ok
+test_number_with_bool (test_add_integer.AddIntegerTestCase) ... FAIL
+test_number_with_non_number (test_add_integer.AddIntegerTestCase) ... ok
+test_one_arg (test_add_integer.AddIntegerTestCase) ... FAIL
+test_passed_inf (test_add_integer.AddIntegerTestCase) ... ok
+test_passed_nan (test_add_integer.AddIntegerTestCase) ... ok
+test_positive_with_negative (test_add_integer.AddIntegerTestCase) ... ok
+test_regular_addition (test_add_integer.AddIntegerTestCase) ... ok
+test_super_long_int (test_add_integer.AddIntegerTestCase) ... ok
+
+======================================================================
+FAIL: test_bool_with_number (test_add_integer.AddIntegerTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/test_add_integer.py", line 63, in test_bool_with_number
+    add_integer(True, 1)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_number_with_bool (test_add_integer.AddIntegerTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/test_add_integer.py", line 67, in test_number_with_bool
+    add_integer(0, False)
+AssertionError: TypeError not raised
+
+======================================================================
+FAIL: test_one_arg (test_add_integer.AddIntegerTestCase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/test_add_integer.py", line 75, in test_one_arg
+    add_integer(1)
+AssertionError: TypeError not raised
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.094s
+
+FAILED (failures=3)
