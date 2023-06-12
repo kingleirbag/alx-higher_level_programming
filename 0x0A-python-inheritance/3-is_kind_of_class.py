@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module that  returns True if the object is an instance 
+Module that check if is instance obj
 """
 
 
