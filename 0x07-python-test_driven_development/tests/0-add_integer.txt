@@ -1,47 +1,102 @@
-test_addition_over_multiple_values (test_add_integer.AddIntegerTestCase) ... ok
-test_bool_with_number (test_add_integer.AddIntegerTestCase) ... FAIL
-test_both_float (test_add_integer.AddIntegerTestCase) ... ok
-test_float_with_int (test_add_integer.AddIntegerTestCase) ... ok
-test_int_with_float (test_add_integer.AddIntegerTestCase) ... ok
-test_more_than_2_args (test_add_integer.AddIntegerTestCase) ... ok
-test_negative_with_positive (test_add_integer.AddIntegerTestCase) ... ok
-test_no_args (test_add_integer.AddIntegerTestCase) ... ok
-test_non_number_with_non_number (test_add_integer.AddIntegerTestCase) ... ok
-test_non_number_with_number (test_add_integer.AddIntegerTestCase) ... ok
-test_number_with_bool (test_add_integer.AddIntegerTestCase) ... FAIL
-test_number_with_non_number (test_add_integer.AddIntegerTestCase) ... ok
-test_one_arg (test_add_integer.AddIntegerTestCase) ... FAIL
-test_passed_inf (test_add_integer.AddIntegerTestCase) ... ok
-test_passed_nan (test_add_integer.AddIntegerTestCase) ... ok
-test_positive_with_negative (test_add_integer.AddIntegerTestCase) ... ok
-test_regular_addition (test_add_integer.AddIntegerTestCase) ... ok
-test_super_long_int (test_add_integer.AddIntegerTestCase) ... ok
+The ``0-add_integer`` module
+======================
 
-======================================================================
-FAIL: test_bool_with_number (test_add_integer.AddIntegerTestCase)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/test_add_integer.py", line 63, in test_bool_with_number
-    add_integer(True, 1)
-AssertionError: TypeError not raised
+Using ``add_integer``
+-------------------
 
-======================================================================
-FAIL: test_number_with_bool (test_add_integer.AddIntegerTestCase)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/test_add_integer.py", line 67, in test_number_with_bool
-    add_integer(0, False)
-AssertionError: TypeError not raised
+Importing the function from the module:
+	>>> add_integer = __import__("0-add_integer").add_integer
 
-======================================================================
-FAIL: test_one_arg (test_add_integer.AddIntegerTestCase)
-----------------------------------------------------------------------
-Traceback (most recent call last):
-  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/test_add_integer.py", line 75, in test_one_arg
-    add_integer(1)
-AssertionError: TypeError not raised
+Testing for module docstring:
+	 >>> m = __import__("0-add_integer").__doc__
+	 >>> len(m) > 1
+	 True
 
-----------------------------------------------------------------------
-Ran 18 tests in 0.094s
+Testing for function docstring:
+	 >>> f = __import__("0-add_integer").add_integer.__doc__
+         >>> len(f) > 1
+         True
 
-FAILED (failures=3)
+Testing regular addition:
+	 >>> add_integer(2, 3)
+	 5
+
+Testing positive with negative:
+	 >>> add_integer(2, -4)
+	 -2
+
+Testing negative with positive:
+	 >>> add_integer(-6, 8)
+	 2
+
+Testing addition over multiple values:
+	 >>> [add_integer(i, i ** 2) for i in range(6)]
+	 [0, 2, 6, 12, 20, 30]
+
+Testing float with int:
+	 >>> add_integer(2.1, 4)
+	 6
+
+Testing int with float:
+	 >>> add_integer(5, 7.8)
+	 12
+
+Testing both float:
+	 >>> add_integer(2.45, 3.1)
+	 5
+
+Testing for passed NaN:
+	 >>> add_integer(1, float('nan'))
+	 Traceback (most recent call last):
+	 ...
+	 ValueError: cannot convert float NaN to integer
+
+Testing for passed inf:
+	 >>> add_integer(1, float('inf'))
+	 Traceback (most recent call last):
+	 ...
+	 OverflowError: cannot convert float infinity to integer
+
+Testing super long int:
+	 >>> add_integer(999999999999999999999999999999, 1)
+	 1000000000000000000000000000000
+
+Testing non-number with number:
+	 >>> add_integer([1], 2)
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: a must be an integer
+
+Testing number with non-number:
+	 >>> add_integer(3, "2")
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: b must be an integer
+
+Testing non-number with non-number:
+	 >>> add_integer((2,), {"key": "value"})
+         Traceback (most recent call last):
+         ...
+         TypeError: a must be an integer
+
+Testing bool with number:
+	 >>> add_integer(True, 1)
+	 Traceback (most recent call last):
+         ...
+         TypeError: a must be an integer
+
+Testing number with bool:
+	 >>> add_integer(0, False)
+         Traceback (most recent call last):
+         ...
+         TypeError: b must be an integer
+
+Testing no args:
+	 >>> add_integer()
+	 Traceback (most recent call last):
+	 ...
+	 TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Testing one arg:
+	 >>> add_integer(1)
+	 99
