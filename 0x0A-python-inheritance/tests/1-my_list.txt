@@ -7,31 +7,31 @@ Using ``MyList``
 Importing the function from the module:
         >>> MyList = __import__("1-my_list").MyList
 
-Testing for module docstring:
+Checking for module docstring:
          >>> m = __import__("1-my_list").__doc__
          >>> len(m) > 1
          True
 
-Testing for class docstring:
+Checking for class docstring:
          >>> c = __import__("1-my_list").MyList.__doc__
          >>> len(c) > 1
          True
 
-Testing for method docstring:
+Checking for method docstring:
 	 >>> mod = __import__("1-my_list").MyList.print_sorted.__doc__
 	 >>> len(mod) > 1
 	 True
 
-Testing that MyList inherits from list:
+Checking that MyList inherits from list:
 	 >>> issubclass(MyList, list)
 	 True
 
-Testing for empty list:
+Checking for empty list:
 	 >>> l = MyList()
 	 >>> l.print_sorted()
 	 []
 
-Testing that appendng works:
+Checking that appendng works:
 	 >>> l.append(1)
 	 >>> l.append(2)
 	 >>> l.append(3)
@@ -39,11 +39,24 @@ Testing that appendng works:
 	 >>> print(l)
 	 [1, 2, 3, 4]
 
-Testing for list already in correct order:
+Checking for list already in correct order:
 	 >>> l.print_sorted()
 	 [1, 2, 3, 4]
 
-Testing for one negative number:
+Checking for reversed order list:
+	 >>> l = MyList()
+	 >>> l.append(4)
+	 >>> l.append(3)
+	 >>> l.append(2)
+	 >>> l.append(1)
+	 >>> print(l)
+	 [4, 3, 2, 1]
+	 >>> l.print_sorted()
+	 [1, 2, 3, 4]
+	 >>> print(l)
+	 [4, 3, 2, 1]
+
+Checking for one negative number:
 	 >>> l.append(-1)
 	 >>> l.append(5)
 	 >>> print(l)
@@ -53,7 +66,7 @@ Testing for one negative number:
 	 >>> print(l)
 	 [4, 3, 2, 1, -1, 5]
 
-Testing for all negative numbers:
+Checking for all negative numbers:
 	 >>> l = MyList()
 	 >>> l.append(-10)
 	 >>> l.append(-1)
@@ -66,9 +79,8 @@ Testing for all negative numbers:
 	 [-10, -8, -7, -2, -1]
 	 >>> print(l)
          [-10, -1, -7, -2, -8]
-		 
 
-Testing for too many arguments:
+Checking for too many arguments:
 	 >>> l.print_sorted(1)
 	 Traceback (most recent call last):
 	 ...
